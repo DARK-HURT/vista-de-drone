@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFFFFF; /* Fondo blanco */
+}
+
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('topografia.png'); /* Reemplaza con la ruta de tu imagen de topografía */
+    background-size: 150%; /* Ajusta el tamaño del fondo para reducir el zoom */
+    animation: moveBackground 15s linear infinite; /* Animación para mover el fondo */
+}
+
+/* Animación de movimiento del fondo */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* Contenedor del Visor de Dron */
+.drone-visor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    pointer-events: none; /* Permite que otros elementos interactuables funcionen debajo */
+}
+
+/* Mira Central */
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 200px;
+    background-color: lime;
+    transform: translate(-50%, -50%);
+    animation: blink 1s infinite alternate;
+}
+
+/* Indicadores de Altitud */
+.altitude-indicator {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 2px;
+    height: 20%;
+    background-color: lime;
+}
+
+.altitude-indicator.right {
+    left: 90%;
+}
+
+/* Indicadores de Longitud */
+.longitude-indicator {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 20%;
+    height: 2px;
+    background-color: lime;
+}
+
+.longitude-indicator.bottom {
+    top: 90%;
+}
+
+/* Animación de Parpadeo para la Mira Central */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
