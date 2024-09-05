@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Fondo Animado con Visor de Dron</title>
+    <title>HUD Visor de Dron</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Contenedor del Fondo -->
     <div class="animated-background"></div>
+    <div class="hud">
+        <!-- Elementos del HUD -->
+        <div class="hud-info top-left">MOONS<br>04</div>
+        <div class="hud-info top-right">GALAXY MAP<br>00:466.63</div>
+        <div class="hud-info bottom-left">PLANETS<br>04</div>
+        <div class="hud-info bottom-right">SPECTRAL CLASS<br>G2</div>
 
-    <!-- Contenedor de la Animación de Visor -->
-    <div class="drone-visor">
-        <!-- Mira Central -->
-        <div class="crosshair"></div>
-
-        <!-- Indicadores de Altitud -->
+        <!-- Indicadores -->
         <div class="altitude-indicator"></div>
         <div class="altitude-indicator right"></div>
-
-        <!-- Indicadores de Longitud -->
         <div class="longitude-indicator"></div>
         <div class="longitude-indicator bottom"></div>
+
+        <!-- Indicadores de Estado -->
+        <div class="hud-bar">SURVEYED<br><div class="progress"><div class="progress-fill" style="width: 76%;"></div></div></div>
+        <div class="hud-bar hull">HULL<br><div class="progress"><div class="progress-fill" style="width: 48%;"></div></div></div>
+
+        <!-- Mira Central -->
+        <div class="crosshair"></div>
     </div>
 </body>
 </html>
+
