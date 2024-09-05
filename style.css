@@ -11,12 +11,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('image.png'); /* Reemplaza con la ruta de tu imagen de topografía */
+    background-image: url('topografia.png'); /* Reemplaza con la ruta de tu imagen de topografía */
     background-size: 150%; /* Ajusta el tamaño del fondo para reducir el zoom */
     animation: moveBackground 15s linear infinite; /* Animación para mover el fondo */
 }
 
-/* Animación de movimiento del fondo */
 @keyframes moveBackground {
     0% {
         background-position: 0% 0%;
@@ -50,6 +49,30 @@ body {
     background-color: lime;
     transform: translate(-50%, -50%);
     animation: blink 1s infinite alternate;
+    box-shadow: 0 0 10px lime, 0 0 20px lime; /* Agrega brillo alrededor */
+}
+
+.crosshair::before,
+.crosshair::after {
+    content: '';
+    position: absolute;
+    background-color: lime;
+}
+
+.crosshair::before {
+    width: 100px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.crosshair::after {
+    width: 2px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Indicadores de Altitud */
@@ -60,6 +83,7 @@ body {
     width: 2px;
     height: 20%;
     background-color: lime;
+    animation: slide 2s infinite alternate;
 }
 
 .altitude-indicator.right {
@@ -74,18 +98,29 @@ body {
     width: 20%;
     height: 2px;
     background-color: lime;
+    animation: slide 2s infinite alternate;
 }
 
 .longitude-indicator.bottom {
     top: 90%;
 }
 
-/* Animación de Parpadeo para la Mira Central */
+/* Animación de Parpadeo */
 @keyframes blink {
     0% {
         opacity: 1;
     }
     100% {
         opacity: 0.5;
+    }
+}
+
+/* Animación de Deslizamiento */
+@keyframes slide {
+    0% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(5%);
     }
 }
