@@ -2,6 +2,14 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #000000; /* Fondo blanco */
+}
+
+/* Estilos globales del cuerpo de la página */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #FFFFFF; /* Fondo blanco */
 }
 
@@ -9,25 +17,14 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 200%; /* Duplicar el tamaño del fondo para permitir el movimiento completo */
+    height: 200%;
     background-image: url('image.png'); /* Reemplaza con la ruta de tu imagen de topografía */
     background-size: cover;
-    animation: moveBackground 15s linear infinite;
     z-index: -1; /* Asegura que el fondo esté detrás del HUD */
+    animation: moveBackground 30s linear infinite; /* Animación del fondo */
 }
 
-@keyframes moveBackground {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
 
 /* Contenedor del HUD */
 .hud {
@@ -35,6 +32,7 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none; /* Permite que otros elementos interactuables funcionen debajo */
+    animation: navigateMap 30s linear infinite; /* Aplicación de la animación al HUD */
     color: #000000; /* Color de texto */
     font-family: 'Arial', sans-serif;
     font-size: 16px;
@@ -76,7 +74,7 @@ body {
 .longitude-indicator {
     width: 80%;
     height: 2px;
-    top: 40%;
+    top: 20%;
     left: 10%;
 }
 
@@ -104,19 +102,41 @@ body {
 
 .progress-fill {
     height: 100%;
-    background-color: #5564eb;
+    background-color: #FFFFFF;
 }
 
-/* Mira Central */
 .crosshair {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2px;
-    height: 200px;
-    background-color: #000000;
+    width: 100px; /* Tamaño del círculo */
+    height: 100px; /* Tamaño del círculo */
+    background-color: transparent;
+    border: 2px solid #000000; /* Borde del círculo */
+    border-radius: 50%; /* Hace que sea un círculo */
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px #000000, 0 0 10px #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diamond {
+    width: 40px; /* Ancho del rombo */
+    height: 40px; /* Alto del rombo */
+    background-color: transparent;
+    border: 2px solid #000000; /* Borde del rombo */
+    transform: rotate(45deg); /* Rota el cuadrado para formar un rombo */
+    animation: rotateDiamond 4s linear infinite; /* Animación de rotación del rombo */
+}
+
+/* Animación para rotar el rombo */
+@keyframes rotateDiamond {
+    0% {
+        transform: rotate(45deg); /* Posición inicial del rombo */
+    }
+    100% {
+        transform: rotate(405deg); /* Rota el rombo 360 grados adicionales */
+    }
 }
 
 .crosshair::before,
@@ -142,3 +162,31 @@ body {
     transform: translate(-50%, -50%);
 }
 
+/* Animación de trayectoria del HUD */
+@keyframes navigateMap {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-100px, 50px);
+    }
+    50% {
+        transform: translate(-200px, 100px);
+    }
+    75% {
+        transform: translate(-300px, 50px);
+    }
+    100% {
+        transform: translate(-400px, 0);
+    }
+}
+
+/* Animación del movimiento del fondo */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 50% 50%;
+    }
+}
